@@ -1,0 +1,19 @@
+usePlugin 'war'
+usePlugin('jetty')
+
+version = '1.0'
+manifest.mainAttributes(
+    'Implementation-Title': 'Web',
+    'Implementation-Version': version
+)
+
+
+dependencies {
+    compile project(':api')
+    compile project(':impl')
+    compile group: 'org.springframework', name: 'spring', version: '2.5.3'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '2.5.3'
+    
+    providedCompile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
+    
+}

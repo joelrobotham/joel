@@ -1,0 +1,54 @@
+subprojects {
+  usePlugin 'java'
+  usePlugin 'eclipse'
+
+  repositories {
+      mavenCentral()
+      flatDir name: 'localRepository', dirs: 'lib'
+  }
+
+  dependencies {
+      testCompile group: 'org.mockito', name: 'mockito-all', version: '1.8.0-rc2'
+      testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.1'
+      testCompile group: 'junit', name: 'junit', version: '4.7'
+  }
+repositories {
+    flatDir(name: 'fileRepo', dirs: "$projectDir/build/repo")
+}
+
+task srcJar(type: Jar) {
+    srcDirs.each {
+      fileSet(dir: file(it)){
+      }
+    }
+    classifier = 'src'
+}
+
+task javadocJar(type: Jar) {
+    fileSet(dir: javadocDir)
+    classifier = 'javadoc'
+}
+
+//println "classpathlibs ------> "
+//eclipseCp.classpathLibs.each {
+//  println it
+//}
+//println "classpathlibs ------> "
+
+  uploadArchives {
+    uploadDescriptor = false
+    repositories {
+        add project.repositories.fileRepo
+        add(new org.apache.ivy.plugins.resolver.SshResolver()) {
+            name = 'sshRepo'
+            user = 'username'
+            userPassword = 'pw'
+            host = "http://repo.mycompany.com"
+        }
+    }
+  }
+
+}
+
+
+

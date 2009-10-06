@@ -1,0 +1,12 @@
+usePlugin 'java'
+version = '1.0'
+manifest.mainAttributes(
+    'Implementation-Title': 'Api Impl',
+    'Implementation-Version': version
+)
+
+dependencies {
+    compile project(':api')
+}
+
+
