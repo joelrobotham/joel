@@ -3,3 +3,10 @@ web/build
 api/build
 impl/build
 lib
+api/.classpath
+api/.project
+impl/.classpath
+impl/.project
+web/.classpath
+web/.project
+web/.settings/
