@@ -16,18 +16,18 @@ repositories {
     flatDir(name: 'fileRepo', dirs: "$projectDir/build/repo")
 }
 
-task srcJar(type: Jar) {
-    srcDirs.each {
-      fileSet(dir: file(it)){
-      }
-    }
-    classifier = 'src'
-}
+//task srcJar(type: Jar) {
+//    srcDirs.each {
+//      fileSet(dir: file(it)){
+//      }
+//    }
+//    classifier = 'src'
+//}
 
-task javadocJar(type: Jar) {
-    fileSet(dir: javadocDir)
-    classifier = 'javadoc'
-}
+//task javadocJar(type: Jar) {
+//    fileSet(dir: javadocDir)
+//    classifier = 'javadoc'
+//}
 
 //println "classpathlibs ------> "
 //eclipseCp.classpathLibs.each {
