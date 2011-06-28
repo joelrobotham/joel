@@ -2,6 +2,7 @@ subprojects {
   apply plugin: 'java'
   apply plugin: 'eclipse'
   apply plugin: JRebelPlugin
+  apply plugin: ReleasePlugin
   buildscript {
     repositories {
         add(new org.apache.ivy.plugins.resolver.URLResolver()) {

@@ -5,6 +5,10 @@ class JRebelPlugin implements Plugin<Project> {
   def void apply(Project project) {
 
     project.task('copyJrebel') << {
+       onlyIf {
+         false
+       }
+       println "creating jrebel file"
        def file = """<?xml version="1.0" encoding="UTF-8"?>
 <application
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -21,6 +25,11 @@ class JRebelPlugin implements Plugin<Project> {
     project.jar.doFirst {
       project.copyJrebel.execute()
     }
+    project.gradle.taskGraph.whenReady {taskGraph ->
+      if (taskGraph.hasTask(':api:release')) {
+          project.copyJrebel.enabled = false
+      }
+  }
   }
 
 }
