@@ -5,9 +5,6 @@ class JRebelPlugin implements Plugin<Project> {
   def void apply(Project project) {
 
     project.task('copyJrebel') << {
-       onlyIf {
-         false
-       }
        println "creating jrebel file"
        def file = """<?xml version="1.0" encoding="UTF-8"?>
 <application
@@ -25,6 +22,9 @@ class JRebelPlugin implements Plugin<Project> {
     project.jar.doFirst {
       project.copyJrebel.execute()
     }
+    project.copyJrebel.group = 'build'
+    project.copyJrebel.description = 'Generated a jrebel.xml file and put it in the build/main/classes directory, ready to be jarred up'
+
     project.gradle.taskGraph.whenReady {taskGraph ->
       if (taskGraph.hasTask(':api:release')) {
           project.copyJrebel.enabled = false
