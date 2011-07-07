@@ -1,6 +1,7 @@
 apply plugin: 'war'
 apply plugin: 'jetty'
 apply plugin: 'tomcat'
+apply plugin: JSLintPlugin
 
 version = '1.0'
 manifest.mainAttributes(
