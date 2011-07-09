@@ -3,6 +3,12 @@ subprojects {
   apply plugin: 'eclipse'
   apply plugin: JRebelPlugin
   apply plugin: ReleasePlugin
+  apply plugin: 'sonar'
+
+  sonar {
+    serverUrl = "http://localhost:9000"
+  }
+ 
   buildscript {
     repositories {
         add(new org.apache.ivy.plugins.resolver.URLResolver()) {
