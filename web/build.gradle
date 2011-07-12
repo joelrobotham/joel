@@ -2,6 +2,7 @@ apply plugin: 'war'
 apply plugin: 'jetty'
 apply plugin: 'tomcat'
 apply plugin: JSLintPlugin
+apply plugin: DemoPlugin
 
 version = '1.0'
 manifest.mainAttributes(
@@ -19,4 +20,8 @@ dependencies {
 
     runtime('jstl:jstl:1.1.2')
     
+}
+
+taskWithProperties {
+  property1 = "BLAH"
 }
