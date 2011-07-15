@@ -1,3 +1,7 @@
 here's a file I added on master
 here's some extra text
 And a last bit of test
+
+Hmm, this should cause a merge conflict
+
+I resolved it by including both bits
