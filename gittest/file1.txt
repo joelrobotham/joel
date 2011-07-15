@@ -1,2 +1,5 @@
 here's an initial test
 Here's the merged change
+initial commit
+subsequent commit
+last commit
