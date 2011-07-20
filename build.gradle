@@ -27,6 +27,23 @@ subprojects {
     }
 }
 
+eclipse.dependsOn cleanEclipse
+
+eclipseProject {
+    withXml { provider ->
+        def filter = provider.asNode()
+          .appendNode("filteredResources")
+          .appendNode("filter")
+        // the following value needs to be unique
+        filter.appendNode("id", "12345")
+        filter.appendNode("name")
+        filter.appendNode("type", "30")
+        def matcher = filter.appendNode("matcher")
+        matcher.appendNode("id", "org.eclipse.ui.ide.multiFilter")
+        matcher.appendNode("arguments", "1.0-projectRelativePath-matches-false-false-build")
+    }
+}
+
   repositories {
       mavenCentral()
       flatDir name: 'localRepository', dirs: 'lib'
