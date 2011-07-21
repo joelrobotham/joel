@@ -35,7 +35,7 @@ eclipseProject {
           .appendNode("filteredResources")
           .appendNode("filter")
         // the following value needs to be unique
-        filter.appendNode("id", "12345")
+        filter.appendNode("id", String.valueOf(System.currentTimeMillis()))
         filter.appendNode("name")
         filter.appendNode("type", "30")
         def matcher = filter.appendNode("matcher")
