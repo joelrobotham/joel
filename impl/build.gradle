@@ -5,8 +5,28 @@ manifest.mainAttributes(
     'Implementation-Version': version
 )
 
+
+configurations {
+	javascript
+}
+
 dependencies {
     compile project(':api')
+	javascript group: 'com.madgag', name: 'madgag-hamcrest-matchers', version: '0.3'
+}
+
+task mungeJavascript << {
+	configurations.javascript.each {
+		println "Munging javascript" + it
+	}
+	
+	configurations.javascript.dependencies.each {
+		
+		
+		configurations.javascript.files(it).each { file ->
+			println "unzip " + file + " to " + it.name
+		}
+	}
 }
 
 
