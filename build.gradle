@@ -43,11 +43,11 @@ subprojects {
 tasks.eclipse.dependsOn tasks.cleanEclipse
 
 
-eclipse.project.file {
-    withXml { provider ->
-		ignoreResourcesFromDirectory(provider, "build")
-    }
-}
+//eclipse.project.file {
+    //withXml { provider ->
+//		ignoreResourcesFromDirectory(provider, "build")
+ //   }
+//}
 
 
 

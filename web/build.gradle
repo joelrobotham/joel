@@ -25,3 +25,7 @@ dependencies {
 taskWithProperties {
   property1 = "BLAH"
 }
+
+demo {
+  dependencyProject = project(':api')
+}
