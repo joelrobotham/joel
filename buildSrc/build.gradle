@@ -1,0 +1,14 @@
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenRepo(urls: 'http://repo.gradle.org/gradle/libs')
+}
+
+
+dependencies {
+    compile gradleApi()
+    testCompile 'junit:junit:4.8.2'
+    groovy localGroovy()
+}
+
