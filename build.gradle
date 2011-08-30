@@ -21,7 +21,25 @@ subprojects {
   sonar {
     serverUrl = "http://localhost:9000"
   }
+  def masterJobs = ['REAConsumerSearch-master-release']
  
+  task duplicatePipeline << {
+    println "Duplicating pipe from ${jenkinsHome}" 
+    masterJobs.each {
+        def masterJobDirLocation = "${jenkinsHome}/jobs/${it}"
+        if (!file(masterJobDirLocation).exists()) {
+          throw new IllegalArgumentException("Can't find job directory called ${masterJobDirLocation}")
+        }
+        def branchJob = it.replace("master", "sprint${sprintNumber}")
+        println "Duplicating ${it} into ${branchJob}"
+        def newJobDirLocation = "${jenkinsHome}/jobs/${branchJob}"
+        file(newJobDirLocation).mkdirs()
+        def originalJobConfig = file("${masterJobDirLocation}/config.xml").text
+        def newJobConfigFile = file("${newJobDirLocation}/config.xml")
+        newJobConfigFile.write(originalJobConfig.replace("master", "sprint${sprintNumber}"))
+    }
+  }
+  
   buildscript {
     repositories {
         add(new org.apache.ivy.plugins.resolver.URLResolver()) {
